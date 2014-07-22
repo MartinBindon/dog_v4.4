@@ -4,9 +4,10 @@ var petName;
 var pet;
 var petCollection;
 
+
 function initialize() 
 	{
-
+		var allPets;
 		// if there is nothing in localStorage, do nothing!
 		// If there is something in localStorage
 		// get string, return to usable info with JSON parse and assign to a variable.
@@ -15,7 +16,7 @@ function initialize()
 
 		if(localStorage.petCollection)
 			{
-				var allPets = [];				
+				allPets = [];				
 				allPets = JSON.parse(localStorage.getItem('petCollection'));
 			}	
 

@@ -15,10 +15,9 @@
   <script src="js/localStorage.js"></script>
   <!-- loads google maps API, sensor = true enables HTML5 geolocation tools -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp
-  key=AIzaSyAW5rR3uLv0XhTYrca4KkoGL-_tyO16gvY&amp;sensor=true">  
+  key=AIzaSyAW5rR3uLv0XhTYrca4KkoGL-_tyO16gvY&amp;sensor=true">
   </script>
-  <!-- loads google places API -->
-  <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>-->
+  <!-- loads google places API -->  
 
   <link href="css/codiqa.ext.min.css" rel="stylesheet">
   <link href="css/jquery.mobile-1.3.1.min.css" rel="stylesheet">
@@ -586,7 +585,8 @@
               function changePage(){
 
                   $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
-                  initializeMap();
+                  var search = "pet_store";
+                  initializeMap(search);
               }
             </script>
 
@@ -837,6 +837,6 @@
   </div>
 
 
-
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </body>
 </html>
