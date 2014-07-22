@@ -47,6 +47,9 @@ function geoSuccess(position)
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
+
+    $("#searchID").append("pet store");
+    
   }
 
 function geoError() 
