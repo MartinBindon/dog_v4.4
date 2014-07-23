@@ -35,7 +35,7 @@ function geoSuccess(position)
 
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: geolocation,
-      zoom: 8
+      zoom: 7
     });
 
     var request = {
@@ -48,7 +48,7 @@ function geoSuccess(position)
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 
-    $("#searchID").append("pet store");
+    document.getElementById('searchID').innerHTML = 'pet store';
     
   }
 
@@ -72,9 +72,10 @@ function callback(results, status) {
 
 function createMarker(place) {
   var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
+  var marker = new google.maps.Marker({    
+    position: place.geometry.location,
+    animation: google.maps.Marker.DROP,
+    map: map
   });
 
   google.maps.event.addListener(marker, 'click', function() {
