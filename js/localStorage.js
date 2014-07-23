@@ -7,6 +7,8 @@ var petCollection;
 
 function initialize() 
 	{
+		spinnerplugin.show();
+
 		var allPets;
 		// if there is nothing in localStorage, do nothing!
 		// If there is something in localStorage
