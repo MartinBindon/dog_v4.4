@@ -7,7 +7,23 @@ var petCollection;
 
 function initialize() 
 	{
-		spinnerplugin.show();
+		// Native loading spinner
+	    if (window.spinnerplugin) 
+	    	{
+	         $.extend($.mobile, 
+	         	{
+	            	loading: function() 
+	            		{
+	                		// Show/hide spinner
+	                		var arg = arguments ? arguments[0] : '';
+	                		if (arg == 'show') spinnerplugin.show({'overlay':true});
+	                		else if (arg == 'hide') spinnerplugin.hide();           
+
+	                		// Compatibility with jQM 1.4
+	                		return { loader: function() { } }
+	            		}
+	        	}); 
+	    }
 
 		var allPets;
 		// if there is nothing in localStorage, do nothing!
