@@ -566,9 +566,19 @@
                   </b>
               </p>
           </div>
-          <div data-role="fieldcontain" data-controltype="searchinput">
-              <input name="" id="searchinput3" placeholder="" value="" type="search">
-          </div>
+          <div data-role="fieldcontain" data-controltype="searchinput" class="ui-grid-a">
+
+            <div class="ui-block-a">
+              <input name="searchbox" id="searchinput3" placeholder="" value="" data-type="search" data-inline="true">
+            </div>
+
+            <div class="ui-block-b">
+              <button type="submit" data-inline="true" onClick="textSearch()" style="float: right;">
+                Search!
+              </button>
+            </div>
+
+          </div><!-- /grid-b -->
           <div data-controltype="textblock">
               <p>
                   <b>
@@ -576,6 +586,7 @@
                       <br>
                   </b>
               </p>
+
           </div>
 
           <a data-role="button" id="#findMapsButton-1" onClick="petStoreSearch()"> <!--onclick="initializeMap()"-->
@@ -590,11 +601,11 @@
               Kennels
           </a>
 
-          <a data-role="button" href="#findMaps">
+          <a data-role="button" href="#findMaps" onClick="dogWalkingSearch()">
               Dog walking
           </a>
 
-          <a data-role="button" href="#findMaps">
+          <a data-role="button" href="#findMaps"onClick="petSitterSearch()">
               Pet sitter
           </a>
 

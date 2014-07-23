@@ -4,6 +4,7 @@ var map;
 var infowindow;
 var geolocation;
 var search;
+var searchString;
 
 function initializeMap() 
   {
@@ -43,7 +44,8 @@ function geoSuccess(position)
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
 
-    if (search == 1) {
+    if (search == 1) 
+      {
         var request = {
         location: geolocation,
         radius: 2000,
@@ -52,9 +54,10 @@ function geoSuccess(position)
         document.getElementById('searchID').innerHTML = 'Pet Store';
         service.radarSearch(request, callback);
         console.log('pet_store');
-    }
+      }
 
-    else if(search == 2) {
+    else if(search == 2) 
+      {
         var request = {
         location: geolocation,
         radius: 2000,
@@ -63,9 +66,10 @@ function geoSuccess(position)
         document.getElementById('searchID').innerHTML = 'Vet';
         service.radarSearch(request, callback);
         console.log('veterinary_care');
-    }
+      }
 
-    else if(search == 3) {
+    else if(search == 3) 
+      {
         var request = {
         location: geolocation,
         radius: 2000,
@@ -74,7 +78,43 @@ function geoSuccess(position)
         document.getElementById('searchID').innerHTML = 'Kennels';
         service.textSearch(request, callback);
         console.log('kennels');
-    } 
+      } 
+
+    else if(search == 4) 
+      {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        query: ['dog walking']
+        };
+        document.getElementById('searchID').innerHTML = 'dog walker';
+        service.textSearch(request, callback);
+        console.log('kennels');
+      } 
+
+    else if(search == 5) 
+      {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        query: ['pet sitter']
+        };
+        document.getElementById('searchID').innerHTML = 'pet sitter';
+        service.textSearch(request, callback);
+        console.log('kennels');
+      } 
+
+    else if(search == 6) 
+      {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        query: [searchString]
+        };
+        document.getElementById('searchID').innerHTML = 'unique search';
+        service.textSearch(request, callback);
+        console.log('kennels');
+      } 
     
   }
 
@@ -136,4 +176,29 @@ function kennelsSearch()
     search = 3;
     initializeMap(search);
     console.log('I searched for a kennels');
+  }
+
+  function dogWalkingSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 4;
+    initializeMap(search);
+    console.log('I searched for a dog walker');
+  }
+
+  function petSitterSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 5;
+    initializeMap(search);
+    console.log('I searched for a pet sitter');
+  }
+
+  function textSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 6;
+    initializeMap(search);
+    searchString = document.getElementById("searchinput3").value;
+    console.log('I searched for anything');
   }
