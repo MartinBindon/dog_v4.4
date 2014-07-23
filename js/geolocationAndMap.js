@@ -36,7 +36,7 @@ function geoSuccess(position)
 
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: geolocation,
-      zoom: 14
+      zoom: 15
     });
 
     var request = {
@@ -71,17 +71,19 @@ function callback(results, status) {
   }
 }
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({    
-    position: place.geometry.location,
-    animation: google.maps.Marker.DROP,
-    map: map
-  });
+function createMarker(place) 
+  {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({    
+        position: place.geometry.location,
+        animation: google.maps.Marker.DROP,
+        map: map
+      });
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
+    google.maps.event.addListener(marker, 'click', function() 
+      {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+      });
+  }
 
