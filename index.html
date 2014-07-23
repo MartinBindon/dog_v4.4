@@ -50,7 +50,7 @@
 
 
           
-            <a data-role="button" data-theme="c" href="#addPet"> <!-- removed  onclick="createPet();" -->
+            <a data-role="button" data-theme="b" href="#addPet"> <!-- removed  onclick="createPet();" -->
                 Add new pet
             </a>
 
@@ -577,31 +577,27 @@
                   </b>
               </p>
           </div>
-          <a data-role="button" id="#findMapsButton-1" onClick="changePage()"> <!--onclick="initializeMap()"-->
-              Pet food store
+
+          <a data-role="button" id="#findMapsButton-1" onClick="petStoreSearch()"> <!--onclick="initializeMap()"-->
+              Pet store
           </a>
 
-            <script>
-              function changePage(){
-
-                  $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
-                  var search = "pet_store";
-                  initializeMap(search);
-              }
-            </script>
-
-          <a data-role="button" href="#findMaps">
+          <a data-role="button" href="#findMaps" onClick="vetSearch()">
               Veterinary practice
           </a>
-          <a data-role="button" href="#findMaps">
-              Cattery/Kennels
+
+          <a data-role="button" href="#findMaps" onClick="kennelsSearch()">
+              Kennels
           </a>
+
           <a data-role="button" href="#findMaps">
               Dog walking
           </a>
+
           <a data-role="button" href="#findMaps">
               Pet sitter
           </a>
+
       </div>
 
 

@@ -7,6 +7,9 @@ var petCollection;
 
 function initialize() 
 	{
+		
+		var allPets;
+
 		// Native loading spinner
 	    if (window.spinnerplugin) 
 	    	{
@@ -23,9 +26,9 @@ function initialize()
 	                		return { loader: function() { } }
 	            		}
 	        	}); 
-	    }
+	    	}
 
-		var allPets;
+
 		// if there is nothing in localStorage, do nothing!
 		// If there is something in localStorage
 		// get string, return to usable info with JSON parse and assign to a variable.

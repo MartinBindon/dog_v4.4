@@ -3,6 +3,7 @@
 var map;
 var infowindow;
 var geolocation;
+var search;
 
 function initializeMap() 
   {
@@ -36,20 +37,44 @@ function geoSuccess(position)
 
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: geolocation,
-      zoom: 15
+      zoom: 12
     });
-
-    var request = {
-      location: geolocation,
-      radius: 1000,
-      types: ['pet_store']
-    };
 
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
 
-    document.getElementById('searchID').innerHTML = 'pet store';
+    if (search == 1) {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        types: ['pet_store']
+        };
+        document.getElementById('searchID').innerHTML = 'Pet Store';
+        service.radarSearch(request, callback);
+        console.log('pet_store');
+    }
+
+    else if(search == 2) {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        types: ['veterinary_care']
+        };
+        document.getElementById('searchID').innerHTML = 'Vet';
+        service.radarSearch(request, callback);
+        console.log('veterinary_care');
+    }
+
+    else if(search == 3) {
+        var request = {
+        location: geolocation,
+        radius: 2000,
+        types: ['kennels']
+        };
+        document.getElementById('searchID').innerHTML = 'Kennels';
+        service.radarSearch(request, callback);
+        console.log('kennels');
+    } 
     
   }
 
@@ -74,10 +99,10 @@ function callback(results, status) {
 function createMarker(place) 
   {
     var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({    
-        position: place.geometry.location,
-        animation: google.maps.Marker.DROP,
-        map: map
+    var marker = new google.maps.Marker({  
+        map: map,  
+        position: place.geometry.location
+        //animation: google.maps.Marker.DROP,
       });
 
     google.maps.event.addListener(marker, 'click', function() 
@@ -87,3 +112,27 @@ function createMarker(place)
       });
   }
 
+
+function petStoreSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 1;
+    initializeMap(search);
+    console.log('I searched for a pet store');
+  }
+
+function vetSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 2;
+    initializeMap(search);
+    console.log('I searched for a florist');
+  }
+
+function kennelsSearch()
+  {
+    $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
+    search = 3;
+    initializeMap(search);
+    console.log('I searched for a kennels');
+  }
