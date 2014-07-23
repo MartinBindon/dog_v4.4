@@ -35,7 +35,7 @@ function geoSuccess(position)
 
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: geolocation,
-      zoom: 7
+      zoom: 14
     });
 
     var request = {
