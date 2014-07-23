@@ -44,7 +44,7 @@ function initialize()
 			{
 				console.log(allPets[i]);
 				console.log(allPets[i].pet_name);
-				$("#startPageButtonArea").append("<a data-role='button' data-theme = 'c' href=#informationSummary data-corners='true' data-shadow='true' data-wrapperels='span' class='ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c' onclick='getPet()'><span class='ui-btn-inner'><span class='ui-btn-text'>" + allPets[i].pet_name + "</span></span></a>");
+				$("#startPageButtonArea").append("<a data-role='button' data-theme = 'c' href=#informationSummary data-corners='true' data-shadow='true' data-wrapperels='span' class='ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c' onclick='getPet()'><span class='ui-btn-inner'><span id='petName' class='ui-btn-text'>" + allPets[i].pet_name + "</span></span></a>");
 			}
 
 		//reset allPets array to empty again in case things change the next time this page is accessed.
