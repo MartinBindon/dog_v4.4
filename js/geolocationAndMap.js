@@ -69,10 +69,10 @@ function geoSuccess(position)
         var request = {
         location: geolocation,
         radius: 2000,
-        types: ['kennels']
+        query: ['kennels']
         };
         document.getElementById('searchID').innerHTML = 'Kennels';
-        service.radarSearch(request, callback);
+        service.textSearch(request, callback);
         console.log('kennels');
     } 
     
@@ -92,6 +92,7 @@ function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       createMarker(results[i]);
+      console.log(results[i]);
     }
   }
 }
