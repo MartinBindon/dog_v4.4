@@ -9,6 +9,7 @@ var searchString;
 function initializeMap() 
   {
 
+    // If geolocation is supported,set a variety of options
     if(navigator.geolocation) 
       {
         console.log('Geolocation is supported');
@@ -25,25 +26,34 @@ function initializeMap()
       } else {
                 console.log('Geolocation is NOT supported');
 
-                document.getElementById('map_canvas').innerHTML = 'No Geolocation Support.';
+                document.getElementById('map_canvas').innerHTML = 'No Geolocation Support. You will be unable to search.';
               }
   }
 
+
+// If geolocation is supported and position was obtained.
 function geoSuccess(position) 
   {
+    // obtains and assigns latitude and longitude of current position.
     var myLat = position.coords.latitude;
     var myLong = position.coords.longitude;
 
+    // assigns a map based on the current position.
     var geolocation = new google.maps.LatLng(myLat, myLong);
 
+    // place map on screen in correct element. Sets zoom level.
     map = new google.maps.Map(document.getElementById('map_canvas'), {
       center: geolocation,
       zoom: 12
     });
 
+    // prepares an infowindow which overlays the map. This is used to display the markers.
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
 
+    // Uses Google Places API and passes it the search parameter set by the press of the button on the 'Find' page.
+    // Some contain radar searches (if the place type is supported by Google Places) or text search.
+    // Search 6 collects the text input in the search bar and passes this to Google places as the search string.
     if (search == 1) 
       {
         var request = {
@@ -51,6 +61,7 @@ function geoSuccess(position)
         radius: 2000,
         types: ['pet_store']
         };
+        // injects search term into the results page HTML to show what the user searched for.
         document.getElementById('searchID').innerHTML = 'Pet Store';
         service.radarSearch(request, callback);
         console.log('pet_store');
@@ -118,6 +129,7 @@ function geoSuccess(position)
     
   }
 
+// Deals with Errors
 function geoError() 
   {
     console.log('Error occured. Error code: ');  //  + error.code
@@ -128,6 +140,7 @@ function geoError()
       // 3: timed out
 }  
 
+// If the google places service is available it loops through each of the results and creates a marker for each result.
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
@@ -137,6 +150,7 @@ function callback(results, status) {
   }
 }
 
+// Draws the markers on the infowindow overlay
 function createMarker(place) 
   {
     var placeLoc = place.geometry.location;
@@ -153,7 +167,7 @@ function createMarker(place)
       });
   }
 
-
+// Functions that assign searches based on which button was clicked in the 'Find' page.
 function petStoreSearch()
   {
     $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });
@@ -194,6 +208,7 @@ function kennelsSearch()
     console.log('I searched for a pet sitter');
   }
 
+  // Collects text string that was input into the search bar and submitted.
   function textSearch()
   {
     $.mobile.changePage($('#findMaps'), { transition: "flip", changeHash: true });

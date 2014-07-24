@@ -11,6 +11,7 @@ function initialize()
 		var allPets;
 
 		// Native loading spinner
+		// This is a loading spinner - code obtained from PhoneGap build but is not currently working as intended. Could be due to jQM v 1.4, while jQM 1.3 files are provided by PhoneGap Build! 
 	    if (window.spinnerplugin) 
 	    	{
 	         $.extend($.mobile, 
@@ -71,11 +72,8 @@ function getPet()
 	{
 		console.log("getPet called.");
 
-		//for (var i in pet) {
-		//	console.log(pet[i]);  // this is returning each character of the string
-		//	var allpet = JSON.parse(pet[i]);  // getting an unexpected end error
-		//	console.log(allpet.pet_name);
-		//}
+		// This will need to retrieve and parse petCollection from localStorage
+		// Then loop through each element and extract required information
 
 	}
 
@@ -116,7 +114,8 @@ function createPet()
 			pet_weight: document.getElementById("textinput10").value,
 			tmt_flea: document.getElementById("textinput11").value,
 			tmt_worm: document.getElementById("textinput12").value,
-			tmt_jabs: document.getElementById("textinput13").value
+			tmt_jabs: document.getElementById("textinput13").value,
+			pet_photo: document.getElementById("camerainput1").value
 		}
 
 		// create button for the new pet if one exists in that part of the petCollection
